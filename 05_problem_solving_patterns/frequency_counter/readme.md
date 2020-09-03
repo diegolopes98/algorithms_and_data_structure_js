@@ -1,0 +1,1 @@
+the problem is: create a function that counts the frequency of the elements squared of a array in another array
