@@ -35,5 +35,3 @@ function checkFrequencies(frequencyObj1, frequencyObj2) {
   }
   return true
 }
-
-console.log(isAnagram('azz', 'zaa'))
