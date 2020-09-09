@@ -1,0 +1,1 @@
+a frequency counter that checks the anagram, returns true if the both str has the same frequency of chars
