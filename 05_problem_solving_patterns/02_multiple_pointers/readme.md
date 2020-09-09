@@ -1,0 +1,1 @@
+the problem is: create a function that returns the first pair that the sum is equal zero in an array of 2 elements, if none pairs return undefined
