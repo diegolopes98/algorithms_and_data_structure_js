@@ -1,0 +1,1 @@
+the problem is: create a function that count the amount of unique values in a sorted array without nested loops
