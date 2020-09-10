@@ -1,0 +1,1 @@
+create a function that finds the max sum of an array of number with the range as parameter
