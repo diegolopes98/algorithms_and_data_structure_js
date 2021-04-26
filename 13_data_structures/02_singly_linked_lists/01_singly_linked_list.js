@@ -22,8 +22,39 @@ class SinglyLinkedList {
             this.tail = node
         }
 
-        this.length+=1;
+        this.length++;
 
         return this;
+    }
+
+    traverse() {
+        let curr = this.head
+        while(curr) {
+            console.log(curr.val);
+            curr = curr.next
+        }
+    }
+
+    pop() {
+        if(!this.length) return
+
+        let curr = this.head
+        let prev = null
+
+        while(curr.next) {
+            prev = curr
+            curr = curr.next
+        }
+
+        prev.next = null
+        this.tail = prev
+        this.length--
+
+        if(this.length === 0) {
+            this.head = null
+            this.tail = null
+        }
+
+        return curr;
     }
 }
