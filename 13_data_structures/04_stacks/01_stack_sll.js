@@ -12,6 +12,7 @@ class Stack {
         this.length = 0;
     }
 
+    //similar to unshift of linked lists
     push(val) {
         const node = new Node(val);
         if(!this.first) {
@@ -26,6 +27,7 @@ class Stack {
         return ++this.length;
     }
 
+    //similar to shift of linked lists
     pop() {
         if(!this.first) return null;
         const popped = this.first;
