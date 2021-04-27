@@ -160,6 +160,8 @@ class DoublyLinkedList {
         this.length--;
         return removed;
     }
+
+    //TODO: add reverse as exercise
 }
 
 const list = new DoublyLinkedList();
