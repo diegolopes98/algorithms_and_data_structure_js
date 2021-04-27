@@ -149,7 +149,7 @@ class DoublyLinkedList {
 
         const removed = this.get(idx);
         const prev = removed.prev;
-        const next = removed.nex;
+        const next = removed.next;
         
         prev.next = next;
         next.prev = prev;
