@@ -106,7 +106,33 @@ class SinglyLinkedList {
 
         return false
     }
+
+    insert(idx, val) {
+        if(idx < 0 || idx > this.length) return false
+        
+        if(idx === this.length) {
+            return !!this.push(val)
+        } 
+        
+        if(idx === 0) {
+            return !!this.unshift(val)
+        }
+    
+        const node = new Node(val)
+        const pre = this.get(idx - 1)
+        node.next = pre.next
+        pre.next = node
+        this.length++
+        
+        return true
+    }
 }
 
 const list = new SinglyLinkedList();
+
+list.push('diego')
+list.push('lopes')
+list.insert(2, 'test')
+list.traverse()
+console.log(list.length)
 
