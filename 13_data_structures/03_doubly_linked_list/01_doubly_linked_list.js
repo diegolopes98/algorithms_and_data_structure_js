@@ -161,14 +161,23 @@ class DoublyLinkedList {
         return removed;
     }
 
-    //TODO: add reverse as exercise
-}
+    reverse() {
+        let curr = this.head
+        this.head = this.tail
+        this.tail = curr
 
-const list = new DoublyLinkedList();
-console.log(list);
-list.push(1);
-list.push(2);
-list.push(3);
-list.push(4);
-list.push(5);
-console.log(list.get(3));
+        let next
+        let prev = null;
+        for(let i = 0; i < this.length; i++) {
+            next = curr.next;
+
+            curr.next = prev;
+            curr.prev = next;
+            
+            prev = curr;
+            curr = next;
+        }
+       
+        return this;
+    }
+}
