@@ -9,7 +9,7 @@ class Stack {
     constructor() {
         this.first = null;
         this.last = null;
-        this.size = 0;
+        this.length = 0;
     }
 
     push(val) {
@@ -23,7 +23,7 @@ class Stack {
             this.first.next = oldFirst;
         }
 
-        return ++this.size;
+        return ++this.length;
     }
 
     pop() {
@@ -31,8 +31,12 @@ class Stack {
         const popped = this.first;
         if(this.first === this.last) this.last = null;
         this.first = popped.next;
-        this.size--;
+        this.length--;
         return popped.val;
+    }
+
+    size() {
+        return this.length;
     }
 
 }
