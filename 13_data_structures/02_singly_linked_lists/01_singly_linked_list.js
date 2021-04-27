@@ -57,4 +57,30 @@ class SinglyLinkedList {
 
         return curr;
     }
+
+    shift() {
+        if(!this.head) return
+
+        const shifted = this.head
+        this.head = shifted.next
+        this.length--
+
+        if(this.length === 0) {
+            this.head = null
+            this.tail = null
+        }
+        
+        return shifted;
+    }
 }
+
+const list = new SinglyLinkedList();
+
+list.push(1)
+list.push(2)
+list.push(3)
+
+list.traverse()
+const node = list.shift()
+console.log('shifted', node.val)
+list.traverse()
