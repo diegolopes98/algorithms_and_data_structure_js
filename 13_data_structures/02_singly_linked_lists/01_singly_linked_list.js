@@ -86,15 +86,17 @@ class SinglyLinkedList {
         this.length++
         return this
     }
+
+    get(idx) {
+        if(idx < 0 || idx >= this.length) return null
+
+        let curr = this.head
+        for(let c = 0; c <= idx; c++) {
+            if (c == idx) return curr
+            curr = curr.next
+        }
+    }
 }
 
 const list = new SinglyLinkedList();
 
-list.push(1)
-list.push(2)
-list.push(3)
-
-list.traverse()
-list.unshift(10)
-console.log('unshifted', 10)
-list.traverse()
