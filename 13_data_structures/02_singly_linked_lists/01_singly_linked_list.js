@@ -139,15 +139,30 @@ class SinglyLinkedList {
         this.length--
         return removed
     }
+
+    reverse() {
+        let curr = this.head
+        this.head = this.tail
+        this.tail = curr
+
+        let next;
+        let prev = null;
+        for(let i = 0; i < this.length; i++) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        
+        return this;
+    }
 }
 
 const list = new SinglyLinkedList();
 
 list.push('diego')
+list.push('pereira')
 list.push('lopes')
-console.log('removed', list.remove(0))
-console.log('removed', list.remove(0))
-
+list.reverse()
 list.traverse()
-console.log('length', list.length)
 
