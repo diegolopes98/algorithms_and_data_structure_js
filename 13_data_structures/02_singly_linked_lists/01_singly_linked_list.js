@@ -13,7 +13,7 @@ class SinglyLinkedList {
     }
 
     push(val) {
-        const node = new Node(val);
+        const node = new Node(val)
         if (!this.head) {
             this.head = node
             this.tail = this.head
@@ -69,8 +69,22 @@ class SinglyLinkedList {
             this.head = null
             this.tail = null
         }
-        
+
         return shifted;
+    }
+
+    unshift(val) {
+        const node = new Node(val)
+        if(!this.head) {
+            this.head = node
+            this.tail = node
+        } else {
+            node.next = this.head
+            this.head = node
+        }
+
+        this.length++
+        return this
     }
 }
 
@@ -81,6 +95,6 @@ list.push(2)
 list.push(3)
 
 list.traverse()
-const node = list.shift()
-console.log('shifted', node.val)
+list.unshift(10)
+console.log('unshifted', 10)
 list.traverse()
