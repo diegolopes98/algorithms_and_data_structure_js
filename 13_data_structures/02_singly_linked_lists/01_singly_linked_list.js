@@ -126,13 +126,28 @@ class SinglyLinkedList {
         
         return true
     }
+
+    remove(idx) {
+        if(idx < 0 || idx >= this.length) return
+        if(idx === 0 ) return this.shift()
+        if(idx === this.length - 1) return this.pop()
+
+        const prev = this.get(idx - 1)
+        const removed = prev.next
+        prev.next = removed.next
+
+        this.length--
+        return removed
+    }
 }
 
 const list = new SinglyLinkedList();
 
 list.push('diego')
 list.push('lopes')
-list.insert(2, 'test')
+console.log('removed', list.remove(0))
+console.log('removed', list.remove(0))
+
 list.traverse()
-console.log(list.length)
+console.log('length', list.length)
 
