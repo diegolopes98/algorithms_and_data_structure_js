@@ -104,9 +104,33 @@ class BinarySearchTree {
         return BinarySearchTree.findSuccessorNode(this.root, null, value);
     }
 
+    predecessor(value) {
+        return BinarySearchTree.findPredecessorNode(this.root, null, value);
+    }
+
     static findMinimumNode(node) {
         if (!node.left) return node;
         if (node.left) return findMinNode(node.left);
+    }
+
+    static findMaximumNode(node) {
+        if (!node.right) return node;
+        if (node.right) return findMinNode(node.right);
+    }
+
+    static findPredecessorNode(root, pred, value) {
+        if(root === null) return root;
+
+        if(root.value === value) {
+            if (root.left) return BinarySearchTree.findMaximumNode(root.left);
+        } else if (value > root.value ) {
+            pred = root;
+            return BinarySearchTree.findPredecessorNode(root.right, pred, value);
+        } else if (value < root.value) {
+            return BinarySearchTree.findPredecessorNode(root.left, pred, value)
+        }
+
+        return pred;
     }
 
     static findSuccessorNode(root, succ, value) {
@@ -137,4 +161,5 @@ bst.insert(11)
 bst.insert(2)
 bst.insert(16)
 bst.insert(7)
-bst.successor(7)
+console.log(bst.successor(7).value)
+console.log(bst.predecessor(7).value)
