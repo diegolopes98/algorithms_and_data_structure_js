@@ -1,6 +1,6 @@
 class Node {
     constructor(value) {
-        this.value = value
+        this.value = value;
         this.left = null;
         this.right = null;
     }
@@ -99,9 +99,37 @@ class BinarySearchTree {
         return containsHelper(value, this.root);
 
     }
+
+    successor(value) {
+        return BinarySearchTree.findSuccessorNode(this.root, null, value);
+    }
+
+    static findMinimumNode(node) {
+        if (!node.left) return node;
+        if (node.left) return findMinNode(node.left);
+    }
+
+    static findSuccessorNode(root, succ, value) {
+        if(root === null) return root;
+
+        if(root.value === value) {
+            if (root.right) return BinarySearchTree.findMinimumNode(root.right);
+        } else if (value < root.value ) {
+            succ = root;
+            return BinarySearchTree.findSuccessorNode(root.left, succ, value);
+        } else if (value > root.value) {
+            return BinarySearchTree.findSuccessorNode(root.right, succ, value)
+        }
+
+        return succ;
+    }
 }
 
 const bst = new BinarySearchTree();
+//              10
+//      5               13
+//  2       7       11      16
+
 bst.insert(10)
 bst.insert(5)
 bst.insert(13)
@@ -109,8 +137,4 @@ bst.insert(11)
 bst.insert(2)
 bst.insert(16)
 bst.insert(7)
-console.log(bst.find(2))
-console.log(bst.contains(2))
-
-console.log(bst.find(20))
-console.log(bst.contains(20))
+bst.successor(7)
