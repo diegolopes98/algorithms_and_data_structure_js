@@ -110,12 +110,12 @@ class BinarySearchTree {
 
     static findMinimumNode(node) {
         if (!node.left) return node;
-        if (node.left) return findMinNode(node.left);
+        if (node.left) return BinarySearchTree.findMinimumNode(node.left);
     }
 
     static findMaximumNode(node) {
         if (!node.right) return node;
-        if (node.right) return findMinNode(node.right);
+        if (node.right) return BinarySearchTree.findMaximumNode(node.right);
     }
 
     static findPredecessorNode(root, pred, value) {
