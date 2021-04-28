@@ -25,7 +25,7 @@ class BinarySearchTree {
                 }
 
                 root.right = node;
-                return this; 
+                return this;
 
             } else if (root.value > node.value) {
                 if (root.left) {
@@ -38,7 +38,36 @@ class BinarySearchTree {
             }
         }
 
-        return insertHelper(newNode, this.root)
+        return insertHelper(newNode, this.root);
+
+    }
+
+    find(value) {
+        if (!this.root) return null;
+
+        const findHelper = (val, root) => {
+            if (root.value < val) {
+                if (root.right) {
+                    return findHelper(val, root.right);
+                }
+
+                return root.right;
+
+            } else if (root.value > val) {
+                if (root.left) {
+                    return findHelper(val, root.left);
+                }
+
+                return root.left;
+
+            } else if (val === root.value) {
+                return root;
+            }
+
+            return null;
+        }
+
+        return findHelper(value, this.root);
 
     }
 }
@@ -51,4 +80,4 @@ bst.insert(11)
 bst.insert(2)
 bst.insert(16)
 bst.insert(7)
-console.log(bst)
+console.log(bst.find(20))
