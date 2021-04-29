@@ -176,6 +176,8 @@ class BinarySearchTree {
     }
 }
 
+module.exports = BinarySearchTree;
+
 const bst = new BinarySearchTree();
 const values = [10, 5, 15, 2, 7, 12, 17, 1, 3, 6, 8, 11, 13, 16, 18];
 values.forEach(value => bst.insert(value));
