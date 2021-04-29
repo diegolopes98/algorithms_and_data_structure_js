@@ -29,7 +29,6 @@ function tailrec_dfs_pre_order_traversal(tree) {
         if(node.right) rightStack.push(node.right);
         
         if(leftQueue.size()) return tr_traverse(leftQueue.dequeue(), list, leftQueue, rightStack);
-        if(!node.left && node.right) return tr_traverse(node.right, list, leftQueue, rightStack);
         if(rightStack.size()) return tr_traverse(rightStack.pop(), list, leftQueue, rightStack);
 
         return list;
