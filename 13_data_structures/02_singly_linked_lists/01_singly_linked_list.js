@@ -158,6 +158,8 @@ class SinglyLinkedList {
     }
 }
 
+module.exports = SinglyLinkedList;
+
 const list = new SinglyLinkedList();
 
 list.push('diego')
