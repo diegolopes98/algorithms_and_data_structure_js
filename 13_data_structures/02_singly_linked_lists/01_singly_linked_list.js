@@ -160,11 +160,11 @@ class SinglyLinkedList {
 
 module.exports = SinglyLinkedList;
 
-const list = new SinglyLinkedList();
+// const list = new SinglyLinkedList();
 
-list.push('diego')
-list.push('pereira')
-list.push('lopes')
-list.reverse()
-list.traverse()
+// list.push('diego')
+// list.push('pereira')
+// list.push('lopes')
+// list.reverse()
+// list.traverse()
 
