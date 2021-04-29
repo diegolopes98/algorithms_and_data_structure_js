@@ -178,25 +178,25 @@ class BinarySearchTree {
 
 module.exports = BinarySearchTree;
 
-const bst = new BinarySearchTree();
-const values = [10, 5, 15, 2, 7, 12, 17, 1, 3, 6, 8, 11, 13, 16, 18];
-values.forEach(value => bst.insert(value));
+// const bst = new BinarySearchTree();
+// const values = [10, 5, 15, 2, 7, 12, 17, 1, 3, 6, 8, 11, 13, 16, 18];
+// values.forEach(value => bst.insert(value));
 
-// bst now :
-//                                  10
-//                  5                                   15
-//          2              7                    12              17
-//      1       3      6        8          11       13      16      18
-bst.remove(10);
-// bst now :
-//                                  11
-//                  5                                   15
-//          2              7                    12              17
-//      1       3      6        8                   13      16      18
-bst.remove(12);
-// bst now :
-//                                  11
-//                  5                                   15
-//          2              7                    13              17
-//      1       3      6        8                           16      18
-console.log(bst);
+// // bst now :
+// //                                  10
+// //                  5                                   15
+// //          2              7                    12              17
+// //      1       3      6        8          11       13      16      18
+// bst.remove(10);
+// // bst now :
+// //                                  11
+// //                  5                                   15
+// //          2              7                    12              17
+// //      1       3      6        8                   13      16      18
+// bst.remove(12);
+// // bst now :
+// //                                  11
+// //                  5                                   15
+// //          2              7                    13              17
+// //      1       3      6        8                           16      18
+// console.log(bst);
