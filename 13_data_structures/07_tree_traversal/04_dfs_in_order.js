@@ -9,13 +9,56 @@ function dfs_in_order_traversal(tree) {
 
     const traverse = (node) => {
         if (node.left) traverse(node.left);
-        list.push(node.value); 
+        list.push(node.value);
         if (node.right) traverse(node.right);
     }
 
     traverse(tree.root);
 
     return list;
+}
+
+function tailrec_dfs_in_order_traversal(tree) {
+    if (!tree.root) return new List();
+
+    const tr_traverse = (
+        node,
+        list = new List(),
+        leftStack = new Stack(),
+        rightStack = new Stack(),
+        parentStack = new Stack(),
+        processedFlag = {},
+    ) => {
+        parentStack.push(node);
+
+        if (node.left && !processedFlag[node.left.value]) leftStack.push(node.left);
+        if (node.right && !processedFlag[node.left.value] && !processedFlag[node.left.value]) rightStack.push(node.right);
+
+        if (
+            (!node.left && !node.right)
+            || (processedFlag[node.left.value])
+        ) {
+            const current = parentStack.pop();
+            list.push(current.value);
+            processedFlag[current.value] = true;
+
+            if (current.right) {
+                const right = rightStack.pop()
+                if (right.value === current.right.value) return tr_traverse(right, list, leftStack, rightStack, parentStack, processedFlag);
+                right.push(right);
+            }
+
+            if (parentStack.size()) return tr_traverse(parentStack.pop(), list, leftStack, rightStack, parentStack, processedFlag);
+        }
+
+        if (leftStack.size()) return tr_traverse(leftStack.pop(), list, leftStack, rightStack, parentStack, processedFlag);
+
+        if (rightStack.size()) return tr_traverse(rightStack.pop(), list, leftStack, rightStack, parentStack, processedFlag);
+
+        return list;
+    }
+
+    return tr_traverse(tree.root);
 }
 
 
@@ -32,5 +75,7 @@ values.forEach(value => bst.insert(value));
 // [ 2, 5, 7, 10, 12, 15, 17]
 
 const list = dfs_in_order_traversal(bst);
+const trlist = tailrec_dfs_in_order_traversal(bst);
 
 console.log(list);
+console.log(trlist);
