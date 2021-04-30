@@ -32,20 +32,29 @@ function tailrec_dfs_post_order_traversal(tree) {
         parentStack.push(node);
 
         if (node.left && !processedFlag[node.left.value]) leftStack.push(node.left);
-        if (node.right && !processedFlag[node.right.value]) rightStack.push(node.right);
+
+        if (
+            node.right
+            && !processedFlag[node.right.value]
+            && (
+                (node.left && !processedFlag[node.left.value])
+                || !node.left
+            )
+        ) {
+            rightStack.push(node.right);
+        }
 
         if (
             (!node.left && !node.right)
-            || (processedFlag[node.left.value] && processedFlag[node.right.value])
+            || (
+                ((node.left && processedFlag[node.left.value]) || !node.left)
+                && ((node.right && processedFlag[node.right.value]) || !node.right)
+            )
         ) {
             const current = parentStack.pop();
             list.push(current.value);
             processedFlag[current.value] = true;
-            if(parentStack.size()) {
-                return tr_traverse(parentStack.pop(), list, leftStack, rightStack, parentStack, processedFlag);
-            } else {
-                return list;
-            }
+            if (parentStack.size()) return tr_traverse(parentStack.pop(), list, leftStack, rightStack, parentStack, processedFlag);
         }
 
         if (leftStack.size()) return tr_traverse(leftStack.pop(), list, leftStack, rightStack, parentStack, processedFlag);
@@ -58,16 +67,16 @@ function tailrec_dfs_post_order_traversal(tree) {
 }
 
 const bst = new BST();
-const values = [10, 5, 15, 2, 7, 12, 17];
+const values = [10, 5, 15, 2, 17];
 values.forEach(value => bst.insert(value));
 
 // bst now :
 //                                  10
 //                  5                                   15
-//          2              7                    12              17
+//          2                                                   17
 
 //expected return:
-// [ 2, 7, 5, 12, 17, 15, 10]
+// [ 2, 5, 17, 15, 10]
 
 const list = dfs_post_order_traversal(bst);
 const trlist = tailrec_dfs_post_order_traversal(bst);
