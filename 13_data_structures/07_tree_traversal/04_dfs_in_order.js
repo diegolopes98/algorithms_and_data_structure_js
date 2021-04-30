@@ -76,16 +76,16 @@ function tailrec_dfs_in_order_traversal(tree) {
 
 
 const bst = new BST();
-const values = [10, 5, 15, 2, 7, 17];
+const values = [10, 5, 15, 2, 17];
 values.forEach(value => bst.insert(value));
 
 // bst now :
 //                                  10
 //                  5                                   15
-//          2              7                                    17
+//          2                                               17
 
 //expected return:
-// [ 2, 5, 7, 10, 15, 17]
+// [ 2, 5, 10, 15, 17]
 
 const list = dfs_in_order_traversal(bst);
 const trlist = tailrec_dfs_in_order_traversal(bst);
