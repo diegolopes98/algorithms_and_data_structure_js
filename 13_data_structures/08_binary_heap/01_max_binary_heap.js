@@ -27,7 +27,7 @@ class MaxBinaryHeap {
 
         const max = this.values[0];
         const last = this.values.pop();
-        if (last) this.values[0] = last;
+        this.values[0] = last;
 
         const bubbleDown = (arr, currIdx = 0) => {
             if (!arr.length) return;
