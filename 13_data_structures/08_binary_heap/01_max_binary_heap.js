@@ -39,7 +39,7 @@ class MaxBinaryHeap {
             const left = arr[leftChildIdx];
             const right = arr[rightChildIdx];
 
-            if ((left && curr < left  ) || (right && curr < right)) {
+            if ((left !== undefined && curr < left  ) || (right !== undefined && curr < right)) {
                 if (left >= right) {
                     arr[currIdx] = left;
                     arr[leftChildIdx] = curr;
